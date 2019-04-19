@@ -103,7 +103,7 @@ export class BarChartComponent implements OnInit {
     active
   }: {
     event: MouseEvent;
-    active: {}[];
+    active: any;
   }): void {
     if (active.length > 0) {
       const chart = active[0];

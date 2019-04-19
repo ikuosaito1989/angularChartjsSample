@@ -1,3 +1,24 @@
-canvas {
-  max-width: 80%;
+.balloon {
+  z-index: 100;
+  border-radius: 5px;
+  font-size: 13px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding: 0px 15px;
+  min-width: 60px;
+  max-width: 100%;
+  color: white;
+  background: rgba(#666666, 0.7);
+  left: 44%;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid rgba(#666666, 0.7);
 }
