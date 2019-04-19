@@ -105,7 +105,10 @@ export class BarChartComponent implements OnInit {
     event: MouseEvent;
     active: {}[];
   }): void {
-    console.log(event, active);
+    if (active.length > 0) {
+      const chart = active[0];
+      alert(`${chart._index}番目のグラフがクリックされました。`);
+    }
   }
 
   public chartHovered({
