@@ -1,10 +1,14 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { BarChartComponent } from "./bar-chart/bar-chart.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: "", redirectTo: "/barchart", pathMatch: "full" },
+  { path: "barchart", component: BarChartComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
