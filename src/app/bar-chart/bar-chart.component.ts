@@ -10,6 +10,8 @@ import { Label } from "ng2-charts";
 export class BarChartComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
+    // 凡例を非表示
+    legend: { display: false },
     tooltips: {
       // ツールチップ非表示
       enabled: false
@@ -23,7 +25,7 @@ export class BarChartComponent implements OnInit {
           display: false,
           barPercentage: 0.7,
           ticks: {
-            max: "80点"
+            max: "80"
           }
         },
         {
@@ -31,7 +33,11 @@ export class BarChartComponent implements OnInit {
           // maxを100に設定することでラベルは（0,20,40,60,80, 100）の位置に設定される
           display: true,
           ticks: {
-            max: "100点"
+            max: "100"
+          },
+          // 縦線消す
+          gridLines: {
+            display: false
           }
         }
       ],
@@ -39,6 +45,10 @@ export class BarChartComponent implements OnInit {
         {
           // グリッド線表示可否
           display: true,
+          // 一番左の線を消す
+          gridLines: {
+            drawBorder: false
+          },
           ticks: {
             max: 70,
             // ラベルを非表示にするので必要ないけど一応
@@ -58,22 +68,20 @@ export class BarChartComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = [
-    "0点",
-    "20点",
-    "40点",
-    "60点",
-    "80点",
-    "100点"
-  ];
+  public barChartLabels: Label[] = ["0", "20", "40", "60", "80", "100"];
   public barChartType: ChartType = "bar";
   public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
     {
       data: [10, 40, 60, 20, 5],
-      label: "人数",
-      borderColor: "rgba(0, 159, 232, 0.7)",
+      hoverBackgroundColor: [
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(0, 159, 232, 0.8)",
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(238, 238, 238, 0.8)"
+      ],
       // 1個1個色を設定する必要がありそう
       backgroundColor: [
         "rgba(238, 238, 238, 0.8)",
