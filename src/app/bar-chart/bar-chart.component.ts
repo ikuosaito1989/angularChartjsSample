@@ -10,8 +10,47 @@ import { Label } from "ng2-charts";
 export class BarChartComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
+    tooltips: {
+      // ツールチップ非表示
+      enabled: false
+    },
     // We use these empty structures as placeholders for dynamic theming.
-    scales: { xAxes: [{}], yAxes: [{}] },
+    scales: {
+      xAxes: [
+        {
+          // 棒グラフのメモリラベル。
+          // maxを80に設定することで棒グラフは（0,20,40,60,80）の位置に設定される
+          display: false,
+          barPercentage: 0.7,
+          ticks: {
+            max: "80点"
+          }
+        },
+        {
+          // 棒グラフのメモリラベル。
+          // maxを100に設定することでラベルは（0,20,40,60,80, 100）の位置に設定される
+          display: true,
+          ticks: {
+            max: "100点"
+          }
+        }
+      ],
+      yAxes: [
+        {
+          // グリッド線表示可否
+          display: true,
+          ticks: {
+            max: 70,
+            // ラベルを非表示にするので必要ないけど一応
+            beginAtZero: true,
+            // callbackでY軸のラベルを消す
+            callback: function() {
+              return "";
+            }
+          }
+        }
+      ]
+    },
     plugins: {
       datalabels: {
         anchor: "end",
@@ -20,20 +59,30 @@ export class BarChartComponent implements OnInit {
     }
   };
   public barChartLabels: Label[] = [
-    "2006",
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012"
+    "0点",
+    "20点",
+    "40点",
+    "60点",
+    "80点",
+    "100点"
   ];
   public barChartType: ChartType = "bar";
   public barChartLegend = true;
 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: "Series A" },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: "Series B" }
+    {
+      data: [10, 40, 60, 20, 5],
+      label: "人数",
+      borderColor: "rgba(0, 159, 232, 0.7)",
+      // 1個1個色を設定する必要がありそう
+      backgroundColor: [
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(0, 159, 232, 0.8)",
+        "rgba(238, 238, 238, 0.8)",
+        "rgba(238, 238, 238, 0.8)"
+      ]
+    }
   ];
 
   constructor() {}
