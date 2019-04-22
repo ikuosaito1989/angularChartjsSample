@@ -1,21 +1,12 @@
 import { ChartDataSets } from 'chart.js';
+const enableColor = 'rgba(0, 159, 232, 0.8)';
+const disableColor = 'rgba(238, 238, 238, 0.8)';
+
 export const chartDataSets: ChartDataSets[] = [
   {
     data: [10, 40, 60, 20, 5],
-    hoverBackgroundColor: [
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(0, 159, 232, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-    ],
     // 1個1個色を設定する必要がありそう
-    backgroundColor: [
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(0, 159, 232, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-      'rgba(238, 238, 238, 0.8)',
-    ],
+    hoverBackgroundColor: [disableColor, disableColor, enableColor, disableColor, disableColor],
+    backgroundColor: [disableColor, disableColor, enableColor, disableColor, disableColor],
   },
 ];
