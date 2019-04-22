@@ -15,11 +15,7 @@ export class BarChartComponent implements OnInit {
   @Input()
   data: number[];
   @Input()
-  labels: string[];
-  @Input()
   interval: number;
-  @Input()
-  max: number;
   @Input()
   selectedIndex: number;
 
@@ -33,9 +29,23 @@ export class BarChartComponent implements OnInit {
 
   ngOnInit() {
     this.barChartData[0].data = this.data;
-    this.barChartLabels = this.labels;
-    this.barChartOptions.scales.xAxes[0].ticks.max = (this.max - this.interval).toString();
-    this.barChartOptions.scales.xAxes[1].ticks.max = this.max.toString();
+    const xAxesMax = this.interval * this.data.length;
+    const yAxesMax = Math.max(...this.data) + 10;
+    this.barChartOptions.scales.xAxes[0].ticks.max = (xAxesMax - this.interval).toString();
+    this.barChartOptions.scales.xAxes[1].ticks.max = xAxesMax.toString();
+    this.barChartOptions.scales.yAxes[0].ticks.max = yAxesMax;
+    this.setColors();
+    this.setLabels();
+  }
+
+  // events
+  public chartClicked({ event, active }: { event: MouseEvent; active: any }): void {
+    if (active.length > 0) {
+      alert(`${active[0]._index + 1}番目のグラフがクリックされました。`);
+    }
+  }
+
+  private setColors() {
     const colors: string[] = [];
     for (let i = 0; i < this.data.length; i++) {
       const color = i === this.selectedIndex - 1 ? BarColors.Enabled : BarColors.Disableed;
@@ -45,10 +55,9 @@ export class BarChartComponent implements OnInit {
     }
   }
 
-  // events
-  public chartClicked({ event, active }: { event: MouseEvent; active: any }): void {
-    if (active.length > 0) {
-      alert(`${active[0]._index + 1}番目のグラフがクリックされました。`);
+  private setLabels() {
+    for (let i = 0; i < this.data.length + 1; i++) {
+      this.barChartLabels.push((this.interval * i).toString());
     }
   }
 }

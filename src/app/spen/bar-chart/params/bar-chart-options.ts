@@ -16,7 +16,7 @@ export const chartOptions: ChartOptions = {
         display: false,
         barPercentage: 0.7,
         ticks: {
-          max: '80',
+          max: '',
         },
       },
       {
@@ -24,7 +24,7 @@ export const chartOptions: ChartOptions = {
         // maxを100に設定することでラベルは（0,20,40,60,80,100）の位置に設定される
         display: true,
         ticks: {
-          max: '100',
+          max: '',
         },
         // 縦線消す
         gridLines: {
@@ -41,7 +41,7 @@ export const chartOptions: ChartOptions = {
           drawBorder: false,
         },
         ticks: {
-          max: 70,
+          max: '',
           // ラベルを非表示にするので必要ないけど一応
           beginAtZero: true,
           // callbackでY軸のラベルを消す
