@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { chartDataSets } from './params/bar-chart-data-sets';
@@ -18,6 +18,8 @@ export class BarChartComponent implements OnInit {
   interval: number;
   @Input()
   selectedIndex: number;
+  @Output()
+  clickBarChart = new EventEmitter<object>();
 
   public barChartOptions: ChartOptions = chartOptions;
   public barChartData: ChartDataSets[] = chartDataSets;
@@ -41,9 +43,7 @@ export class BarChartComponent implements OnInit {
 
   // events
   public chartClicked({ event, active }: { event: MouseEvent; active: any }): void {
-    if (active.length > 0) {
-      alert(`${active[0]._index + 1}番目のグラフがクリックされました。`);
-    }
+    this.clickBarChart.emit(active);
   }
 
   private setColors() {

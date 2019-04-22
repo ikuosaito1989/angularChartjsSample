@@ -2,4 +2,4 @@
   index works!
 </p>
 
-<app-bar-chart [data]="data" [interval]="interval" [selectedIndex]="selectedIndex"> </app-bar-chart>
+<app-bar-chart [data]="data" [interval]="interval" [selectedIndex]="selectedIndex" (clickBarChart)="chartClicked($event)"> </app-bar-chart>

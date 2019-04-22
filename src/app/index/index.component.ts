@@ -11,4 +11,10 @@ export class IndexComponent implements OnInit {
   public selectedIndex = 3;
 
   ngOnInit() {}
+
+  public chartClicked(active: any): void {
+    if (active.length > 0) {
+      alert(`${active[0]._index + 1}番目のグラフがクリックされました。`);
+    }
+  }
 }
