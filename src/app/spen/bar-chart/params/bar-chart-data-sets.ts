@@ -6,7 +6,7 @@ export const chartDataSets: ChartDataSets[] = [
   {
     data: [10, 40, 60, 20, 5],
     // 1個1個色を設定する必要がありそう
-    hoverBackgroundColor: [disableColor, disableColor, enableColor, disableColor, disableColor],
-    backgroundColor: [disableColor, disableColor, enableColor, disableColor, disableColor],
+    hoverBackgroundColor: [disableColor, disableColor, disableColor, disableColor, disableColor],
+    backgroundColor: [disableColor, disableColor, disableColor, disableColor, disableColor],
   },
 ];

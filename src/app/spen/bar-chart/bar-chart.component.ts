@@ -31,12 +31,17 @@ export class BarChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    // this.barChartData[0].data = this.data;
-    // this.barChartLabels = this.labels;
-    // this.barChartOptions.scales.xAxes[0].ticks.max = (this.max - this.interval).toString();
-    // this.barChartOptions.scales.xAxes[1].ticks.max = this.max.toString();
-    // this.barChartData[0].backgroundColor[this.selectedIndex] = 'rgba(0, 159, 232, 0.8)';
-    // this.barChartData[0].hoverBackgroundColor[this.selectedIndex] = 'rgba(0, 159, 232, 0.8)';
+    this.barChartData[0].data = this.data;
+    this.barChartLabels = this.labels;
+    this.barChartOptions.scales.xAxes[0].ticks.max = (this.max - this.interval).toString();
+    this.barChartOptions.scales.xAxes[1].ticks.max = this.max.toString();
+    const colors: string[] = [];
+    for (let i = 0; i < this.data.length; i++) {
+      const color = i === this.selectedIndex - 1 ? 'rgba(0, 159, 232, 0.8)' : 'rgba(238, 238, 238, 0.8)';
+      colors.push(color);
+      this.barChartData[0].backgroundColor = colors;
+      this.barChartData[0].hoverBackgroundColor = colors;
+    }
   }
 
   // events
