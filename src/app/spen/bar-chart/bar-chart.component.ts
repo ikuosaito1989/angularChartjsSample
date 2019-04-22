@@ -4,6 +4,7 @@ import { Label } from 'ng2-charts';
 import { chartDataSets } from './params/bar-chart-data-sets';
 import { chartLabels } from './params/bar-chart-labels';
 import { chartOptions } from './params/bar-chart-options';
+import { BarColors } from './params/bar-colors.enum';
 
 @Component({
   selector: 'app-bar-chart',
@@ -37,7 +38,7 @@ export class BarChartComponent implements OnInit {
     this.barChartOptions.scales.xAxes[1].ticks.max = this.max.toString();
     const colors: string[] = [];
     for (let i = 0; i < this.data.length; i++) {
-      const color = i === this.selectedIndex - 1 ? 'rgba(0, 159, 232, 0.8)' : 'rgba(238, 238, 238, 0.8)';
+      const color = i === this.selectedIndex - 1 ? BarColors.Enabled : BarColors.Disableed;
       colors.push(color);
       this.barChartData[0].backgroundColor = colors;
       this.barChartData[0].hoverBackgroundColor = colors;
