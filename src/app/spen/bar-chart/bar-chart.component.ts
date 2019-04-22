@@ -30,7 +30,8 @@ export class BarChartComponent implements OnInit {
   ngOnInit() {
     this.barChartData[0].data = this.data;
     const xAxesMax = this.interval * this.data.length;
-    const yAxesMax = Math.max(...this.data) + 10;
+    const maxData = Math.max(...this.data);
+    const yAxesMax = Math.ceil(maxData / Math.pow(10, maxData.toString().length - 1)) * Math.pow(10, maxData.toString().length - 1);
     this.barChartOptions.scales.xAxes[0].ticks.max = (xAxesMax - this.interval).toString();
     this.barChartOptions.scales.xAxes[1].ticks.max = xAxesMax.toString();
     this.barChartOptions.scales.yAxes[0].ticks.max = yAxesMax;
@@ -48,11 +49,9 @@ export class BarChartComponent implements OnInit {
   private setColors() {
     const colors: string[] = [];
     for (let i = 0; i < this.data.length; i++) {
-      const color = i === this.selectedIndex - 1 ? BarColors.Enabled : BarColors.Disableed;
-      colors.push(color);
-      this.barChartData[0].backgroundColor = colors;
-      this.barChartData[0].hoverBackgroundColor = colors;
+      colors.push(i === this.selectedIndex - 1 ? BarColors.Enabled : BarColors.Disableed);
     }
+    this.barChartData[0].backgroundColor = this.barChartData[0].hoverBackgroundColor = colors;
   }
 
   private setLabels() {

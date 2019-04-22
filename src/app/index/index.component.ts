@@ -6,9 +6,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   constructor() {}
-  public data = [10, 40, 60, 20, 5];
+  public data = [10, 40, 58, 20, 5];
   public interval = 20;
-  public selectedIndex = 1;
+  public selectedIndex = 3;
 
   ngOnInit() {}
 }
